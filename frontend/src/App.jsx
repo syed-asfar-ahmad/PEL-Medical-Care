@@ -28,7 +28,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, []
+  }, [setIsAuthenticated, setUser]
 );
   return (
     <>
