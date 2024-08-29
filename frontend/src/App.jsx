@@ -28,7 +28,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, []
+  }, [setUser]
 );
   return (
     <>
