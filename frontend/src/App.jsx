@@ -15,7 +15,7 @@ import axios from "axios";
 
 
 const App = () => {
-  const { setIsAuthenticated, setUser,user} = useContext(Context);
+  const { setIsAuthenticated, setUser} = useContext(Context);
   useEffect(()=>{
     const fetchUser = async()=>{
       try {
@@ -28,7 +28,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [user]
+  }, []
 );
   return (
     <>
