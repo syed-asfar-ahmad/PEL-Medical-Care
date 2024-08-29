@@ -22,13 +22,9 @@ const App = () => {
           const response = await axios.get("https://pel-medical-care.onrender.com/api/v1/user/patient/me", { withCredentials: true });
           setIsAuthenticated(true);
           setUser(response.data.user);
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-          localStorage.setItem('isAuthenticated', 'true');
         } catch (error) {
           setIsAuthenticated(false);
           setUser({});
-          localStorage.removeItem('user');
-          localStorage.removeItem('isAuthenticated');
         }
       };
       fetchUser();
