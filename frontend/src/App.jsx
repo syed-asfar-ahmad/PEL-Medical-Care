@@ -14,7 +14,7 @@ import { Context } from "./main";
 import axios from "axios";
 
 const App = () => {
-  const { setIsAuthenticated, setUser } = useContext(Context);
+  const { setIsAuthenticated, setUser,user,isAuthenticated } = useContext(Context);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
