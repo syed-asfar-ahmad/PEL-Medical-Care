@@ -14,7 +14,7 @@ import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
 
 const App = () => {
-  const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
+  const { setIsAuthenticated, admin, setAdmin } =
     useContext(Context);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthenticated]);
+  }, []);
 
   return (
     <Router>
