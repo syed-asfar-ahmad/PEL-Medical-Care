@@ -5,7 +5,8 @@ import { Context } from "../main";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated,setUser } = useContext(Context);
+  
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +27,7 @@ const Login = () => {
         );
           toast.success(response.data.message);
           setIsAuthenticated(true);
+      setUser(response.data.user);
           navigateTo("/");
     } catch (error) {
       toast.error(error.response.data.message);
