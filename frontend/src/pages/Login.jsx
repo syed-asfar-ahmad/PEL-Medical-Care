@@ -28,6 +28,8 @@ const Login = () => {
           toast.success(response.data.message);
           setIsAuthenticated(true);
       setUser(response.data.user);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('isAuthenticated', 'true');
           navigateTo("/");
     } catch (error) {
       toast.error(error.response.data.message);
