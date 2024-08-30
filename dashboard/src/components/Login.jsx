@@ -13,28 +13,23 @@ const Login = () => {
 
   const navigateTo = useNavigate();
 
-  const handleLogin = async (e) => {
+ const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios
-        .post(
+      const response = await axios.post(
           "https://pel-medical-care.onrender.com/api/v1/user/login",
           { email, password, confirmPassword, role: "Admin" },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
           }
-        )
-        .then((res) => {
-          toast.success(res.data.message);
+        );
+          toast.success(response.data.message);
           setIsAuthenticated(true);
-           localStorage.setItem('user', JSON.stringify(response.data.user));
+      setUser(response.data.user);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
           localStorage.setItem('isAuthenticated', 'true');
           navigateTo("/");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-        });
     } catch (error) {
       toast.error(error.response.data.message);
     }
