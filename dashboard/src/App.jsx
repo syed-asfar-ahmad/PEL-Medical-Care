@@ -25,7 +25,7 @@ const App = () => {
     } else {   
           setIsAuthenticated(false);
           setAdmin({});
-          localStorage.removeItem('user');
+          localStorage.removeItem('amin');
           localStorage.removeItem('isAuthenticated');
 
   return (
