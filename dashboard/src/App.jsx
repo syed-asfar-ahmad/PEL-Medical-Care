@@ -14,27 +14,19 @@ import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
 
 const App = () => {
-  const { setIsAuthenticated, admin, setAdmin } =
+  const { setIsAuthenticated, admin, setAdmin,isAuthenticated } =
     useContext(Context);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          "https://pel-medical-care.onrender.com/api/v1/user/admin/me",
-          {
-            withCredentials: true,
-          }
-        );
-        setIsAuthenticated(true);
-        setAdmin(response.data.user);
-      } catch (error) {
-        setIsAuthenticated(false);
-        setAdmin({});
-      }
-    };
-    fetchUser();
-  }, []);
+   const storedUser = localStorage.getItem('admin');
+    const storedAuth = localStorage.getItem('isAuthenticated');
+    if (storedUser && storedAuth) {
+      setIsAuthenticated(JSON.parse(storedAuth));
+      setAdmin(JSON.parse(storedUser));
+    } else {   
+          setIsAuthenticated(false);
+          setAdmin({});
+          localStorage.removeItem('user');
+          localStorage.removeItem('isAuthenticated');
 
   return (
     <Router>
