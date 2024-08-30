@@ -19,7 +19,8 @@ const App = () => {
   useEffect(() => {
       const fetchUser = async () => {
         try {
-          const response = await axios.get("https://pel-medical-care.onrender.com/api/v1/user/patient/me", { withCredentials: true });
+          const response = await axios.get("https://pel-medical-care.onrender.com/api/v1/user/patient/me");
+          console.log(response);
           setIsAuthenticated(true);
           setUser(response.data.user);
         } catch (error) {
@@ -28,7 +29,7 @@ const App = () => {
         }
       };
       fetchUser();
-  }, [setIsAuthenticated, setUser ]);
+  }, []);
 
   return (
     <>
