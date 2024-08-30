@@ -10,13 +10,12 @@ const Navbar = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     try {
-      const res = await axios.get("https://pel-medical-care.onrender.com/api/v1/user/patient/logout", {
-        withCredentials: true,
-      });
-      toast.success(res.data.message);
+      toast.success("User Logout Successfully");
       setIsAuthenticated(false);
+        localStorage.removeItem('user');
+        localStorage.removeItem('isAuthenticated');
       navigate("/login"); // Redirect to login after logout
     } catch (err) {
       toast.error(err.response?.data?.message || "Logout failed. Please try again.");
