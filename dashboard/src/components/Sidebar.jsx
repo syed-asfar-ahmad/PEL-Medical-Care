@@ -16,20 +16,13 @@ const Sidebar = () => {
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
-  const handleLogout = async () => {
-    await axios
-      .get("https://pel-medical-care.onrender.com/api/v1/user/admin/logout", {
-        withCredentials: true,
-      })
-      .then((res) => {
+  const handleLogout =  () => {
+    
         toast.success(res.data.message);
         setIsAuthenticated(false);
           localStorage.removeItem('user');
           localStorage.removeItem('isAuthenticated');
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
+      
   };
 
   const navigateTo = useNavigate();
