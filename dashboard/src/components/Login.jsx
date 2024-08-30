@@ -27,7 +27,7 @@ const Login = () => {
           toast.success(response.data.message);
           setIsAuthenticated(true);
       setAdmin(response.data.user);
-      localStorage.setItem('admin', JSON.stringify(response.data.user));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
           localStorage.setItem('isAuthenticated', 'true');
           navigateTo("/");
     } catch (error) {
