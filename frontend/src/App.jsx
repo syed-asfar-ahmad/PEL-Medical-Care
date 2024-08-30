@@ -15,33 +15,17 @@ import axios from "axios";
 
 const App = () => {
   const { setIsAuthenticated, setUser,user,isAuthenticated } = useContext(Context);
-
-  useEffect(() => {
     const storedUser = localStorage.getItem('user');
     const storedAuth = localStorage.getItem('isAuthenticated');
-
     if (storedUser && storedAuth) {
       setIsAuthenticated(JSON.parse(storedAuth));
       setUser(JSON.parse(storedUser));
-    } else {
-      const fetchUser = async () => {
-        try {
-          const response = await axios.get("https://pel-medical-care.onrender.com/api/v1/user/patient/me", { withCredentials: true });
-          setIsAuthenticated(true);
-          setUser(response.data.user);
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-          localStorage.setItem('isAuthenticated', 'true');
-        } catch (error) {
+    } else {   
           setIsAuthenticated(false);
           setUser({});
           localStorage.removeItem('user');
           localStorage.removeItem('isAuthenticated');
         }
-      };
-      fetchUser();
-    }
-  }, [setIsAuthenticated, setUser]);
-
   return (
     <>
       <Router>
