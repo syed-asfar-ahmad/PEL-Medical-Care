@@ -28,6 +28,8 @@ const Login = () => {
         .then((res) => {
           toast.success(res.data.message);
           setIsAuthenticated(true);
+           localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('isAuthenticated', 'true');
           navigateTo("/");
           setEmail("");
           setPassword("");
