@@ -17,7 +17,7 @@ const App = () => {
   const { setIsAuthenticated, admin, setAdmin,isAuthenticated } =
     useContext(Context);
 
-   const storedUser = localStorage.getItem('admin');
+   const storedUser = localStorage.getItem('user');
     const storedAuth = localStorage.getItem('isAuthenticated');
     if (storedUser && storedAuth) {
       setIsAuthenticated(JSON.parse(storedAuth));
@@ -25,7 +25,7 @@ const App = () => {
     } else {   
           setIsAuthenticated(false);
           setAdmin({});
-          localStorage.removeItem('admin');
+          localStorage.removeItem('user');
           localStorage.removeItem('isAuthenticated');
 
   return (
