@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated,setAdmin } = useContext(Context);
 
   const navigateTo = useNavigate();
 
@@ -26,8 +26,8 @@ const Login = () => {
         );
           toast.success(response.data.message);
           setIsAuthenticated(true);
-      setUser(response.data.user);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      setAdmin(response.data.user);
+      localStorage.setItem('admin', JSON.stringify(response.data.user));
           localStorage.setItem('isAuthenticated', 'true');
           navigateTo("/");
     } catch (error) {
