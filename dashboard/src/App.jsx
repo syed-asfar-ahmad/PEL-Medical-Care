@@ -42,6 +42,6 @@ const App = () => {
       <ToastContainer position="top-center" />
     </Router>
   );
-}
+};
 
 export default App;
