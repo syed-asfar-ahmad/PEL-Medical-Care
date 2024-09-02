@@ -27,7 +27,7 @@ const App = () => {
           setAdmin({});
           localStorage.removeItem('user');
           localStorage.removeItem('isAuthenticated');
-
+    }
   return (
     <Router>
       <Sidebar />
