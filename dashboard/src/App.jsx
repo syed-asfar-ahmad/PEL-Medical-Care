@@ -14,22 +14,19 @@ import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
 
 const App = () => {
-  const { setIsAuthenticated, admin, setAdmin, isAuthenticated } =
+  const { setIsAuthenticated, admin, setAdmin,isAuthenticated } =
     useContext(Context);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+   const storedUser = localStorage.getItem('user');
     const storedAuth = localStorage.getItem('isAuthenticated');
     if (storedUser && storedAuth) {
       setIsAuthenticated(JSON.parse(storedAuth));
       setAdmin(JSON.parse(storedUser));
-    } else {
-      setIsAuthenticated(false);
-      setAdmin({});
-      localStorage.removeItem('user');
-      localStorage.removeItem('isAuthenticated');
-    }
-  }, [setIsAuthenticated, setAdmin]);
+    } else {   
+          setIsAuthenticated(false);
+          setAdmin({});
+          localStorage.removeItem('user');
+          localStorage.removeItem('isAuthenticated');
 
   return (
     <Router>
