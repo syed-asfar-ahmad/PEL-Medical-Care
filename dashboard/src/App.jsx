@@ -27,7 +27,6 @@ const App = () => {
           setAdmin({});
           localStorage.removeItem('user');
           localStorage.removeItem('isAuthenticated');
-    }
 
   return (
     <Router>
@@ -43,6 +42,6 @@ const App = () => {
       <ToastContainer position="top-center" />
     </Router>
   );
-};
+}
 
 export default App;
