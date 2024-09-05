@@ -16,31 +16,20 @@ const Sidebar = () => {
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
-const handleLogout = async () => {
-  try {
-    const res = await axios.get("http://localhost:4000/api/v1/user/admin/logout", {
-      withCredentials: true,
-    });
-
-    // Show success message using toast
-    toast.success(res.data.message);
-
-    // Clear user authentication state
-    setIsAuthenticated(false);
-    setUser({});
-
-    // Clear localStorage
-    localStorage.removeItem("user");
-    localStorage.removeItem("isAuthenticated");
-
-    // Redirect to login page
-    navigate("/login");
-  } catch (err) {
-    // Show error message using toast
-    toast.error(err.response?.data?.message || "Logout failed");
-  }
-};
-
+ const handleLogout = async () => {
+    await axios
+      .get("https://pel-medical-care.onrender.com/api/v1/user/admin/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        setIsAuthenticated(false);
+         })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+      
+  };
 
   const navigateTo = useNavigate();
 
